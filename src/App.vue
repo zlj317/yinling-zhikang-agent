@@ -8,10 +8,21 @@ import { chineseToday } from '@/utils/storage'
 
 const route = useRoute()
 const health = useHealthStore()
-// 触发初始化
+
+// 各模块专属描述文案（用于页面标题下方副标题，区分各模块功能）
+const descMap: Record<string, string> = {
+  '/index': 'AI 智能总览 · 一眼看懂您今日的健康状态',
+  '/medicine': '按时服药提醒 · 不遗漏、不冲突，安心每一天',
+  '/report': 'AI 智能解读体检报告 · 通俗易懂，告别看不懂',
+  '/sign': '血压/血糖/心率一键记录 · 随时掌握健康走势',
+  '/child': '子女关怀面板 · 异地也能守护父母健康',
+  '/popular': 'AI 精准健康科普 · 根据您的慢病情况智能推荐'
+}
+
 health.checkOverdue()
 
 const currentTitle = computed(() => route.meta?.title || '智康Agent')
+const currentDesc = computed(() => descMap[route.path] || '智康Agent · 您身边的健康管家')
 </script>
 
 <template>
@@ -60,16 +71,18 @@ const currentTitle = computed(() => route.meta?.title || '智康Agent')
       </div>
     </aside>
 
-    <!-- 主体内容 -->
+    <!-- 主体内容：修复路由渲染 + 动态描述 -->
     <main style="flex: 1; overflow-y: auto;">
       <div class="page-wrap">
         <div style="margin-bottom: 24px;">
           <div class="page-title">{{ currentTitle }}</div>
-          <div class="muted-text" style="font-size: 18px;">智康Agent · 您身边的健康管家</div>
+          <div class="muted-text" style="font-size: 18px;">{{ currentDesc }}</div>
         </div>
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
-            <component :is="Component" />
+            <div :key="route.path" style="min-height: 600px;">
+              <component :is="Component" />
+            </div>
           </transition>
         </router-view>
       </div>

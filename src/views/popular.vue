@@ -2,7 +2,7 @@
 // AI 精准健康科普 · 根据用户慢病/体检异常动态推荐
 import { ref, computed } from 'vue'
 import { usePopularStore } from '@/stores/feature'
-import { speak } from '@/utils/speech'
+import { speak, stop } from '@/utils/speech'
 
 const store = usePopularStore()
 const keyword = ref('')
@@ -29,8 +29,7 @@ function speakArticle() {
     onEnd: () => reading.value = false
   })
 }
-function stopSpeak() { stop() ; reading.value = false }
-import { stop } from '@/utils/speech'
+function stopSpeak() { stop(); reading.value = false }
 </script>
 
 <template>
