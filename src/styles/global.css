@@ -1,0 +1,233 @@
+/* ========================================================================
+   智康Agent · 全局样式系统 (Glassmorphism 2.0)
+   - 色彩体系：柔和医疗浅蓝 #1677FF 为主
+   - 正常/风险/提示色：#52C41A / #F5222D / #FAAD14
+   - 老年无障碍：全局最小字号 20px，按钮最小 80px
+   ======================================================================== */
+
+:root {
+  /* —— 色彩体系 —— */
+  --color-primary: #1677FF;
+  --color-primary-light: #4096FF;
+  --color-primary-bg: #E6F4FF;
+  --color-success: #52C41A;
+  --color-success-bg: #F6FFED;
+  --color-danger: #F5222D;
+  --color-danger-bg: #FFF1F0;
+  --color-warning: #FAAD14;
+  --color-warning-bg: #FFFBE6;
+
+  --color-text: #1F2937;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #6B7280;
+  --color-bg: #F0F5FA;
+
+  /* —— 玻璃卡片规范 —— */
+  --glass-bg: rgba(255, 255, 255, 0.70);
+  --glass-border: rgba(255, 255, 255, 0.40);
+  --glass-shadow: 0 8px 32px rgba(22, 119, 255, 0.08);
+  --glass-radius: 20px;
+  --glass-blur: blur(16px) saturate(180%);
+
+  /* —— 字号 & 间距 —— */
+  --font-size-base: 20px;
+  --font-size-lg: 22px;
+  --font-size-xl: 26px;
+  --font-size-xxl: 32px;
+  --line-height: 1.8;
+
+  /* —— Element Plus 主题变量覆盖 —— */
+  --el-color-primary: #1677FF;
+  --el-color-success: #52C41A;
+  --el-color-warning: #FAAD14;
+  --el-color-danger: #F5222D;
+  --el-font-size-base: 18px;
+  --el-border-radius-base: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(22, 119, 255, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(82, 196, 26, 0.08), transparent 40%),
+    linear-gradient(135deg, #F0F5FA 0%, #E8F1FA 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* —— 玻璃卡片通用类 —— */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+  padding: 28px;
+}
+
+.glass-card-danger {
+  background: linear-gradient(135deg, rgba(255, 241, 240, 0.85), rgba(255, 255, 255, 0.75));
+  border: 1px solid rgba(245, 34, 45, 0.25);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-radius);
+  box-shadow: 0 8px 32px rgba(245, 34, 45, 0.12);
+  padding: 28px;
+}
+
+.glass-card-success {
+  background: linear-gradient(135deg, rgba(246, 255, 237, 0.85), rgba(255, 255, 255, 0.75));
+  border: 1px solid rgba(82, 196, 26, 0.25);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-radius);
+  box-shadow: 0 8px 32px rgba(82, 196, 26, 0.10);
+  padding: 28px;
+}
+
+.glass-card-warning {
+  background: linear-gradient(135deg, rgba(255, 251, 230, 0.85), rgba(255, 255, 255, 0.75));
+  border: 1px solid rgba(250, 173, 20, 0.25);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-radius);
+  box-shadow: 0 8px 32px rgba(250, 173, 20, 0.10);
+  padding: 28px;
+}
+
+/* —— 老年无障碍大按钮规范 —— */
+.big-btn {
+  min-width: 120px;
+  min-height: 64px;
+  font-size: 22px;
+  border-radius: 20px;
+  padding: 16px 28px;
+  font-weight: 500;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.big-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 119, 255, 0.20);
+}
+.big-btn:active {
+  transform: translateY(0);
+}
+
+/* —— 标签徽章 —— */
+.badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.badge-primary { background: var(--color-primary-bg); color: var(--color-primary); }
+.badge-success { background: var(--color-success-bg); color: var(--color-success); }
+.badge-danger  { background: var(--color-danger-bg); color: var(--color-danger); }
+.badge-warning { background: var(--color-warning-bg); color: var(--color-warning); }
+
+/* —— 标题层级 —— */
+.page-title {
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 8px;
+}
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 16px;
+}
+.muted-text {
+  color: var(--color-text-muted);
+  font-size: 18px;
+}
+
+/* —— 内容容器 —— */
+.page-wrap {
+  padding: 32px 40px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1100px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 780px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .page-wrap { padding: 24px 16px 32px; }
+}
+
+/* —— AI 生成标识（AI 透明化可信设计） —— */
+.ai-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+
+/* —— 工具类 —— */
+.flex { display: flex; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.text-danger { color: var(--color-danger); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-primary { color: var(--color-primary); }
+
+/* —— 滚动条美化 —— */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(22, 119, 255, 0.25);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(22, 119, 255, 0.45);
+}
+::-webkit-scrollbar-track { background: transparent; }
